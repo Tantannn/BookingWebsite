@@ -42,7 +42,7 @@ export const deleteRoom = async (req, res, next) => {
   }
 };
 export const getRoom = async (req, res, next) => {
-  const roomId = req.params.roomid
+  const roomId = req.params.id
   try {
     const room = await Room.findById(roomId)
     res.status(200).json(room)
