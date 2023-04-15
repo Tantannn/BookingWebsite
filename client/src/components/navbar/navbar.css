@@ -2,7 +2,7 @@
   height: 50px;
   background-color: #003580;
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .navContainer{

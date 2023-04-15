@@ -5,6 +5,7 @@
   margin-top: 20px;
 }
 
+
 .hotelWrapper {
   width: 100%;
   max-width: 1024px;
@@ -148,4 +149,20 @@
   font-size: 50px;
   color: lightgray;
   cursor: pointer;
+}
+
+.reserveContainer {
+  display: inline;
+  width: 80%;
+}
+.rReserve {
+  display: flex;
+  float: right;
+}
+
+
+.rSelectedRoom{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 50px;
 }

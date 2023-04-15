@@ -3,22 +3,32 @@ import Navbar from "../../components/navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import axios from "axios";
+import {  useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import {login} from '../../redux/login'
 
 const Login = () => {
+  const [loginError, setLoginError] = useState(false)
   const [loginInput, setLoginInput] = useState({
     username: "",
     password: "",
   });
-
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleChange = (e) => {
     setLoginInput({ ...loginInput, [e.target.name]: e.target.value });
   };
-    const handleSubmit = async () => {
-      try {
-        const data = await axios.post('/api/auth/login', {loginInput})
-      } catch (error) {
-        
+  axios.defaults.baseURL = "http://localhost:5000/";
+  const handleSubmit = async () => {
+    try {
+      const data = await axios.post("/api/auth/login", loginInput);
+      if (data) {
+        dispatch(login(loginInput.username))
+        navigate('/')
       }
+    } catch (error) {
+      setLoginError(true)
+    }
   };
   return (
     <section>
@@ -45,9 +55,9 @@ const Login = () => {
                 value={loginInput.password}
                 autoComplete="on"
               />
-              {/* {isLoginError && (
+              {loginError && (
                 <span className="text-danger">wrong email or password</span>
-              )} */}
+              )}
               <button
                 onClick={handleSubmit}
                 type="button"

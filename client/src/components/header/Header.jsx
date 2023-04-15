@@ -14,7 +14,8 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { searchAction } from "../../redux/search";
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -33,7 +34,7 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -42,8 +43,18 @@ const Header = ({ type }) => {
       };
     });
   };
-
   const handleSearch = () => {
+    console.log(destination, date, options);
+    dispatch(
+      searchAction({
+        destination,
+        date: {
+          startDate: new Date(date[0].startDate).toISOString(),
+          endDate: new Date(date[0].endDate).toISOString(),
+        },
+        options,
+      })
+    );
     navigate("/hotels", { state: { destination, date, options } });
   };
 
