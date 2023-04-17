@@ -23,7 +23,7 @@ const Hotel = () => {
   const [roomPrice, setRoomPrice] = useState(0);
   const [open, setOpen] = useState(false);
   const [openReserve, setOpenReserve] = useState(false);
-  const {log} = useSelector(state => state.user)
+  const auth = useSelector((state) => state.auth);
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -88,7 +88,7 @@ const Hotel = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!log) {
+    if (!auth.log) {
       return alert('Please Sign in First!')
     }
     if (
@@ -175,7 +175,7 @@ const Hotel = () => {
               </span>
               <div className="hotelImages">
                 {data.photos?.map((photo, i) => (
-                  <div className="hotelImgWrapper" key={i}>
+                  <div className="hotelImgWrapper" key={Math.random()}>
                     <img
                       onClick={() => handleOpen(i)}
                       src={photo}
@@ -267,7 +267,7 @@ const Hotel = () => {
                         rooms={room}
                         roomPriceTotal={roomPriceTotal}
                         isAvailable={isAvailable}
-                        key={i}
+                        key={Math.random()}
                       />
                     ))}
                   </div>

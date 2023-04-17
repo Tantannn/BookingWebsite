@@ -67,6 +67,7 @@ const PropertyList = () => {
           </div>
         </>
       )}
+      {error && {error}}
     </>
   )
 }

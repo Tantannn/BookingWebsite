@@ -24,10 +24,10 @@ const Reserve = ({ rooms,roomPriceTotal ,isAvailable}) => {
           </div>
           <div>
             {data.roomNumbers?.map((room) => (
-              <>
+              <div key={Math.random()}>
                 <label>{room.number}</label>
-                <input type="checkbox" name={room._id} key={room._id} value={room.number} onChange={e => handleChange(e, data.price)} disabled={!isAvailable((room))} />
-              </>
+                <input type="checkbox" name={room._id} value={room.number} onChange={e => handleChange(e, data.price)} disabled={!isAvailable((room))} />
+              </div>
             ))}
           </div>
         </div>

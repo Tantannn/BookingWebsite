@@ -18,8 +18,12 @@ const List = () => {
   const [max, setMax] = useState(undefined);
   const [min, setMin] = useState(undefined);
   const [options, setOptions] = useState(location.state.options);
+  var city = ''
+  if (destination) {
+    city = "city=" + destination + "&"
+  } 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?${city}min=${min || 0 }&max=${max || 999}`
   );
 
   const handleClick = () => {
@@ -102,6 +106,7 @@ const List = () => {
           </div>
         </div>
       </div>
+      {error && <p>{error}</p>}
       <Footer/>
     </div>
   );

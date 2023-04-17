@@ -32,11 +32,12 @@ export const login = async (req, res, next) => {
         { id: userFound[0]._id, isAdmin: userFound[0].isAdmin },
         process.env.JWT
       ); 
+      const { password, ...otherDetails} = userFound[0]._doc
       res
         .cookie("access_token", token, {
           httpOnly: true,
         })
-        .status(200).send(userFound)
+        .status(200).send(otherDetails)
     })
   } catch (error) {
     next(error)
