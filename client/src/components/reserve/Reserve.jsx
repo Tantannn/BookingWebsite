@@ -5,9 +5,8 @@ const Reserve = ({ rooms,roomPriceTotal ,isAvailable}) => {
   const { data, loading, error } = useFetch(`rooms/find/${rooms}`);
   const [selectedRooms, setSelectedRooms] = useState('')
   const handleChange = (e, price) => {
-    console.log( e);
-    // setSelectedRooms(e.target.checked ? [...selectedRooms, e.target.value] : selectedRooms.filter((item) => item !== e.target.value))
-    roomPriceTotal(e.target.checked, price)
+    setSelectedRooms(e.target.checked ? [...selectedRooms, e.target.value] : selectedRooms.filter((item) => item !== e.target.value))
+    roomPriceTotal(e.target.checked, +price)
   }
   return (
     <>

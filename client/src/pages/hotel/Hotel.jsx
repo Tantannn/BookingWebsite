@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 const Hotel = () => {
   const hotelId = useParams().id;
   const [slideNumber, setSlideNumber] = useState(0);
-  const [roomPrice, setRoomPrice] = useState(0);
+  const [roomPrice, setRoomPrice] = useState(+0);
   const [open, setOpen] = useState(false);
   const [openReserve, setOpenReserve] = useState(false);
   const auth = useSelector((state) => state.auth);
@@ -43,7 +43,7 @@ const Hotel = () => {
     payment: "",
   });
   const { data, loading, error } = useFetch(`hotels/find/${hotelId}`);
-  
+
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -80,8 +80,16 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
   const roomPriceTotal = (checked, price) => {
-    setRoomPrice(checked ? roomPrice + price : roomPrice - price);
+    console.log(price, checked);
+    if (checked) {
+      setRoomPrice(roomPrice + Number(price));
+    } else {
+      setRoomPrice(roomPrice - Number(price));
+    }
+
+    // setRoomPrice(checked ? roomPrice + Number(price): roomPrice - Number(price));
   };
+  console.log(roomPrice);
   const HandleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -283,9 +291,7 @@ const Hotel = () => {
                         aria-label=".form-select-lg example"
                         defaultValue={"DEFAULT"}
                       >
-                        <option value="DEFAULT">
-                          Select
-                        </option>
+                        <option value="DEFAULT">Select</option>
                         <option value="Cash">Cash</option>
                         <option value="Credit Card">Credit Card</option>
                       </select>
