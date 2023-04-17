@@ -4,8 +4,9 @@ import './reserve.css'
 const Reserve = ({ rooms,roomPriceTotal ,isAvailable}) => {
   const { data, loading, error } = useFetch(`rooms/find/${rooms}`);
   const [selectedRooms, setSelectedRooms] = useState('')
-  const handleChange = (e,price) => {
-    setSelectedRooms(e.target.checked ? [...selectedRooms, e.target.name] : selectedRooms.filter((item) => item !== e.target.name))
+  const handleChange = (e, price) => {
+    console.log( e);
+    // setSelectedRooms(e.target.checked ? [...selectedRooms, e.target.value] : selectedRooms.filter((item) => item !== e.target.value))
     roomPriceTotal(e.target.checked, price)
   }
   return (
@@ -23,10 +24,10 @@ const Reserve = ({ rooms,roomPriceTotal ,isAvailable}) => {
             <p>${data.price}</p>
           </div>
           <div>
-            {data.roomNumbers?.map((room) => (
-              <div key={Math.random()}>
+            {data.roomNumbers?.map((room,i) => (
+              <div key={i}>
                 <label>{room.number}</label>
-                <input type="checkbox" name={room._id} value={room.number} onChange={e => handleChange(e, data.price)} disabled={!isAvailable((room))} />
+                <input type="checkbox" name={room._id} value={room._id} onChange={(e) => handleChange(e, data.price)} disabled={!isAvailable((room))} />
               </div>
             ))}
           </div>

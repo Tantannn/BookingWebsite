@@ -43,6 +43,7 @@ const Hotel = () => {
     payment: "",
   });
   const { data, loading, error } = useFetch(`hotels/find/${hotelId}`);
+  
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -86,10 +87,11 @@ const Hotel = () => {
     const value = event.target.value;
     setState({ ...state, [name]: value });
   };
+  console.log(state);
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!auth.log) {
-      return alert('Please Sign in First!')
+      return alert("Please Sign in First!");
     }
     if (
       !state.name ||
@@ -98,32 +100,32 @@ const Hotel = () => {
       !state.idCard ||
       !state.payment
     ) {
-      return alert('Please enter all fields')
+      return alert("Please enter all fields");
     }
     try {
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const getDatesInRange = (startDate, endDate) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
-    const allDate = new Date(start.getTime())
-    const dates = []
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const allDate = new Date(start.getTime());
+    const dates = [];
     while (allDate <= end) {
-      dates.push(new Date(allDate).getTime())
-      allDate.setDate(allDate.getDate() + 1)
+      dates.push(new Date(allDate).getTime());
+      allDate.setDate(allDate.getDate() + 1);
     }
-    return dates
-  }
-  const alldates = getDatesInRange(date[0].startDate, date[0].endDate)
+    return dates;
+  };
+  const alldates = getDatesInRange(date[0].startDate, date[0].endDate);
   const isAvailable = (roomNumber) => {
-    const isFound = roomNumber.unavailableDates.some((datelength) =>      
-    alldates.includes(new Date(datelength).getTime()),
-    )
-    return !isFound
-  }
+    const isFound = roomNumber.unavailableDates.some((datelength) =>
+      alldates.includes(new Date(datelength).getTime())
+    );
+    return !isFound;
+  };
   return (
     <>
       {loading ? (
@@ -271,16 +273,19 @@ const Hotel = () => {
                       />
                     ))}
                   </div>
-                    <p>
-                      <strong>Total Price = ${roomPrice * totalStayDays}</strong>
-                    </p>
+                  <p>
+                    <strong>Total Price = ${roomPrice * totalStayDays}</strong>
+                  </p>
                   <div>
                     <span>
                       <select
                         className=" w-50 form-select form-select-md mb-3"
                         aria-label=".form-select-lg example"
+                        defaultValue={"DEFAULT"}
                       >
-                        <option selected>Select</option>
+                        <option value="DEFAULT">
+                          Select
+                        </option>
                         <option value="Cash">Cash</option>
                         <option value="Credit Card">Credit Card</option>
                       </select>
