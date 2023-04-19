@@ -67,6 +67,8 @@ export const countByCity = async (req, res, next) => {
     next(err);
   }
 };
+
+// commnet
 export const getHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
   try {
