@@ -1,4 +1,4 @@
-import Transaction from "../models/transactions.js";
+import Transaction from "../models/Transactions.js";
 
 export const createTransaction = async (req, res, next) => {
   const newTransaction = new Transaction(req.body);
@@ -31,8 +31,8 @@ export const deleteTransaction = async (req, res, next) => {
 };
 export const getTransaction = async (req, res, next) => {
   try {
-    const Transaction = await Transaction.findById(req.params.id);
-    res.status(200).json(Transaction);
+    const Transactions = await Transaction.findById(req.params.id);
+    res.status(200).json(Transactions);
   } catch (err) {
     next(err);
   }
@@ -40,8 +40,8 @@ export const getTransaction = async (req, res, next) => {
 
 export const getTransactions = async (req, res, next) => {
   try {
-    const Transaction = await Transaction.find().limit(8)
-    res.status(200).json(Transaction);
+    const Transactions = await Transaction.find({user:req.params.user}).limit(8)
+    res.status(200).json(Transactions);
   } catch (err) {
     next(err);
   }

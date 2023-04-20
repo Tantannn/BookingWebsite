@@ -9,16 +9,14 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
     },
-    city: {
-      type: String,
-    },
-    phone: {
-      type: String,
-    },
     password: {
       type: String,
-      required: true,
     },
+    fullName: String,
+    phoneNumber: String,
+    payment: String,
+    email: String,
+    idCard: Number,
     isAdmin: {
       type: Boolean,
       default: false,

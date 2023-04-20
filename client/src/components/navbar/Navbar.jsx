@@ -15,10 +15,10 @@ const Navbar = () => {
           {auth.log ? (
             <>
               <button className="navButton">
-                <Link to="/register">Hello {auth.user}</Link>{" "}
+                <Link to="/">Hello {auth.user}</Link>{" "}
               </button>
               <button className="navButton">
-                <Link to="/transaction">Transaction</Link>
+                <Link to="/transactions">Transaction</Link>
               </button>
               <button className="navButton">
                 <Link to="/login" onClick={dispatch(logout)}>Log Out</Link>

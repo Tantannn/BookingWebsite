@@ -6,9 +6,15 @@ import Footer from '../../components/footer/Footer'
 import MailList from '../../components/mailList/MailList'
 import './Transactions.css'
 import useFetch from '../../hooks/useFetch'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Transactions = () => {
-  const { data, loading, error } = useFetch(`hotels/find`);
+  const navigate = useNavigate()
+  const auth = useSelector(state => state.auth)
+  if (!auth.log) {navigate('/')}
+  const { data, loading, error } = useFetch(`transactions/${auth.user}`);
+  console.log(data);
   return (
     <section>
       <Navbar />
@@ -35,15 +41,9 @@ const Transactions = () => {
                   <td>{i+1}</td>
                   <td>{item.hotelName}</td>
                   <td>
-                    {item.rooms.map((room, i) => {
-                      if (i > 0) {
-                        return ',' + room.roomNumber.number
-                      } else {
-                        return room.roomNumber.number
-                      }
-                    })}
+                    {item.rooms.map((room, i) => room)}
                   </td>{' '}
-                  <th>Date</th>
+                  <th>{item.startDate} - {item.endDate}</th>
                   <td>${item.price}</td>
                   <td>{item.payment}</td>
                   <td>{item.status}</td>

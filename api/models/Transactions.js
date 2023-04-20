@@ -1,28 +1,24 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema
-mongoose.set('strictQuery', false);
+import mongoose from "mongoose";
 
-// videos: {type: String},
 
-const Transaction = new Schema({
+const TransactionSchema = new mongoose.Schema({
   user: {
     type: Object,
     require: true,
   },
   hotel: {
-    type: Schema.Types.ObjectId,
-    require: true,
+    type: String,
   },
   hotelName: {
     type: String,
     require: true,
   },
   rooms:Array,
-  dateStart: {
+  startDate: {
     type: Date,
     require: true,
   },
-  dateEnd: {
+  endDate: {
     type: Date,
     require: true,
   },
@@ -39,5 +35,4 @@ const Transaction = new Schema({
     require: true,
   },
 });
-
-module.exports = mongoose.model('Transaction', Transaction)
+export default mongoose.model('Transaction', TransactionSchema)

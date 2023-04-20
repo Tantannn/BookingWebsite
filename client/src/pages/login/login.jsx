@@ -18,12 +18,14 @@ const Login = () => {
   const handleChange = (e) => {
     setLoginInput({ ...loginInput, [e.target.name]: e.target.value });
   };
+  console.log(loginInput);
   axios.defaults.baseURL = "http://localhost:5000/";
   const handleSubmit = async () => {
     try {
-      const data = await axios.post("/api/auth/login", loginInput);
-      if (data) {
-        dispatch(login(loginInput.username))
+      const res = await axios.post("/api/auth/login", loginInput);
+      console.log("🚀 ~ file: login.jsx:25 ~ handleSubmit ~ data:", res)
+      if (res) {
+        dispatch(login({userId: res.data._id,user: res.data.username}))
         navigate('/')
       }
     } catch (error) {
