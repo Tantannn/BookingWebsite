@@ -23,7 +23,6 @@ const Login = () => {
   const handleSubmit = async () => {
     try {
       const res = await axios.post("/api/auth/login", loginInput);
-      console.log("🚀 ~ file: login.jsx:25 ~ handleSubmit ~ data:", res)
       if (res) {
         dispatch(login({userId: res.data._id,user: res.data.username}))
         navigate('/')

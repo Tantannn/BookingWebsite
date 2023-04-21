@@ -166,3 +166,9 @@
   grid-template-columns: 60% 40%;
   gap: 50px;
 } */
+
+.rGrid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+}

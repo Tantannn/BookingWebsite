@@ -12,14 +12,14 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 const router = express.Router()
 
 //CREATE
-router.post("/",verifyAdmin, createTransaction);
+router.post("/", createTransaction);
 //UPDATE
-router.put("/:id",verifyAdmin, updateTransaction);
+router.put("/:id", updateTransaction);
 //DELETE
-router.delete("/:id",verifyAdmin, deleteTransaction);
+router.delete("/:id", deleteTransaction);
 //GET
-router.get("/find/:id", getTransaction);
+router.get("/find/:user", getTransaction);
 //GET ALL
-router.get("/:user", getTransactions);
+router.get("/", getTransactions);
 
 export default router 

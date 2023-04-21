@@ -54,7 +54,6 @@ const Hotel = () => {
     phoneNumber: "",
     email: "",
     idCard: "",
-    payment: "",
   });
   const HandleChange = (event) => {
     const name = event.target.name;
@@ -162,50 +161,58 @@ const Hotel = () => {
           </div>
           {openModal && (
             <>
-              <DateRange
-                editableDateInputs={true}
-                onChange={(item) => setDate([item.selection])}
-                moveRangeOnFirstSelection={false}
-                ranges={dates}
-                className=""
-                minDate={new Date()}
-              />
-              <form action="">
-                <h2>Reserve Info:</h2>
-                <p>Your Full Name:</p>
-                <input
-                  type="text"
-                  name="name"
-                  size="20"
-                  id=""
-                  onChange={HandleChange}
-                />
-                <p>Your Phone Number:</p>
-                <input
-                  type="number"
-                  name="number"
-                  size=""
-                  id=""
-                  onChange={HandleChange}
-                />
-                <p>Your Email:</p>
-                <input
-                  type="email"
-                  name="email"
-                  size="20"
-                  id=""
-                  onChange={HandleChange}
-                />
-                <p>Your Identity Card Number:</p>
-                <input
-                  type="number"
-                  name="idCard"
-                  size=""
-                  id=""
-                  onChange={HandleChange}
-                />
-              </form>
-                <Reserve setOpen={setOpenModal} dates={dates} hotelId={id} state={state} totalPriceCal={totalPriceCal} totalPrice={totalPrice* days} hotelName={data.title} />
+              <div className="rGrid-container">
+                <div>
+                  <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDate([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={dates}
+                    className=""
+                    minDate={new Date()}
+                  />
+                </div>
+                <div>
+                  <form action="">
+                    <h2>Reserve Info:</h2>
+                    <p>Your Full Name:</p>
+                    <input
+                      type="text"
+                      name="fullName"
+                      size="20"
+                      id=""
+                      onChange={HandleChange}
+                    />
+                    <p>Your Phone Number:</p>
+                    <input
+                      type="number"
+                      name="phoneNumber"
+                      size=""
+                      id=""
+                      onChange={HandleChange}
+                    />
+                    <p>Your Email:</p>
+                    <input
+                      type="email"
+                      name="email"
+                      size="20"
+                      id=""
+                      onChange={HandleChange}
+                    />
+                    <p>Your Identity Card Number:</p>
+                    <input
+                      type="number"
+                      name="idCard"
+                      size=""
+                      id=""
+                      onChange={HandleChange}
+                    />
+                  </form>
+                </div>
+              </div>
+                <div  className="rGrid-container">
+                  <Reserve setOpen={setOpenModal} dates={dates} hotelId={id} state={state} totalPriceCal={totalPriceCal} totalPrice={totalPrice* days} hotelName={data.title} />
+                </div>
             </>
           )}
           <MailList />

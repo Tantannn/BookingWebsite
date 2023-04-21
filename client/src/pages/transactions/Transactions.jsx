@@ -13,7 +13,7 @@ const Transactions = () => {
   const navigate = useNavigate()
   const auth = useSelector(state => state.auth)
   if (!auth.log) {navigate('/')}
-  const { data, loading, error } = useFetch(`transactions/${auth.user}`);
+  const { data, loading, error } = useFetch(`transactions/find/${auth.user}`);
   console.log(data);
   return (
     <section>

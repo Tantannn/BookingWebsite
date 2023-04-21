@@ -14,8 +14,6 @@ const UserSchema = new mongoose.Schema(
     },
     fullName: String,
     phoneNumber: String,
-    payment: String,
-    email: String,
     idCard: Number,
     isAdmin: {
       type: Boolean,

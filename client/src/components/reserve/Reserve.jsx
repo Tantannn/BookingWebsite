@@ -62,19 +62,19 @@ const handleOption = (e) => {
   };
 
   const navigate = useNavigate();
-
+  console.log(selectedOption);
   const handleClick = async () => {
+    if (selectedOption === [] || !selectedOption) {
+      return alert("Please select Option");
+    }
     if (
-      !state.name ||
-      !state.number ||
+      !state.fullName ||
+      !state.phoneNumber ||
       !state.email ||
-      !state.idCard ||
-      !state.payment
+      !state.idCard 
     ) {
       return alert("Please enter all fields");
-    } else if (!selectedOption) {
-
-    }
+    }  
     try {
       const res1 = await Promise.all(
         selectedRooms.map((roomId) => {
@@ -103,8 +103,8 @@ const handleOption = (e) => {
     } catch (err) {}
   };
   return (
-    <div className="reserve">
-      <div className="rContainer">
+    <div className="">
+      <div className="">
         <span>Select your rooms:</span>
         {data.map((item) => (
           <div className="rItem" key={item._id}>
@@ -132,7 +132,7 @@ const handleOption = (e) => {
             </div>
           </div>
         ))}
-        <select id="select" onChange={handleOption}>
+        <select id="" onChange={handleOption}>
           <option value="select">Select your Payment Medthod</option>
           <option value="Credit Card">Credit Card</option>
           <option value="Cash">Cash</option>

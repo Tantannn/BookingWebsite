@@ -31,7 +31,7 @@ export const deleteTransaction = async (req, res, next) => {
 };
 export const getTransaction = async (req, res, next) => {
   try {
-    const Transactions = await Transaction.findById(req.params.id);
+    const Transactions = await Transaction.find({user:req.params.user});
     res.status(200).json(Transactions);
   } catch (err) {
     next(err);
@@ -40,7 +40,7 @@ export const getTransaction = async (req, res, next) => {
 
 export const getTransactions = async (req, res, next) => {
   try {
-    const Transactions = await Transaction.find({user:req.params.user}).limit(8)
+    const Transactions = await Transaction.find().limit(8)
     res.status(200).json(Transactions);
   } catch (err) {
     next(err);

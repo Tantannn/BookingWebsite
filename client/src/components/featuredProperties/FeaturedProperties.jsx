@@ -19,7 +19,7 @@ const FeaturedProperties = () => {
               <div className="fpItem" key={i}>
                 <img src={image} alt="" className="fpImg" />
                 <span className="fpName">
-                  <Link to={"./hotels/" + data[1]?._id}>{data[i]?.name}</Link>
+                  <Link to={"./hotels/" + data[i]?._id}>{data[i]?.name}</Link>
                 </span>
                 <span className="fpCity"> {data[i]?.city}</span>
                 <span className="fpPrice">Starting from ${data[i]?.cheapestPrice}</span>
