@@ -2,7 +2,6 @@ import "./reserve.css";
 import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Reserve = ({
@@ -27,7 +26,7 @@ const Reserve = ({
 
     while (date <= end) {
       dates.push(new Date(date).getTime());
-      date.setDate(date.getDate() + 1);
+      date.setDate(date.getDate() + 1 );
     }
 
     return dates;
@@ -36,14 +35,12 @@ const Reserve = ({
   const alldates = getDatesInRange(
     dates[0].startDate,
     dates[0].endDate,
-    totalPrice
   );
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       alldates.includes(new Date(date).getTime())
     );
-
     return !isFound;
   };
 const handleOption = (e) => {
@@ -61,9 +58,10 @@ const handleOption = (e) => {
     totalPriceCal(e.target.checked, price);
   };
 
-  const navigate = useNavigate();
-  console.log(selectedOption);
+  
+  // console.log(selectedOption);
   const handleClick = async () => {
+    console.log(selectedRooms);
     if (selectedOption === [] || !selectedOption) {
       return alert("Please select Option");
     }
@@ -78,7 +76,7 @@ const handleOption = (e) => {
     try {
       const res1 = await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
+          const res = axios.put(`/rooms/availability/${roomId.value}`, {
             dates: alldates,
           });
           return res.data;
@@ -97,9 +95,10 @@ const handleOption = (e) => {
           rooms: selectedRooms.map( room => room.name)
         }),
       ]);
-      console.log(res1, res2);
+      if (res1 && res2)
+        alert('Booked Successful!')
       setOpen(false);
-      navigate("/");
+      // navigate("/")
     } catch (err) {}
   };
   return (
