@@ -14,37 +14,39 @@ const app = express()
 
 dotenv.config();
 const connect = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO);
-        console.log("Connected to mongoDB.");
-    } catch (error) {
-        throw error;
-    }
+  try {
+    await mongoose.connect(process.env.MONGO);
+    console.log("Connected to mongoDB.");
+  } catch (error) {
+    throw error;
+  }
 };
 mongoose.connection.on('disconnected', () => {
-    console.log('mongo disconnected');
+  console.log('mongo disconnected');
 })
 mongoose.connection.on('connected', () => {
-    console.log('mongo connected');
+  console.log('mongo connected');
 })
 const corsOptions = {
-    //To allow requests from client
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://127.0.0.1",
-      "http://104.142.122.231",
-    ],
-    credentials: true,
-    exposedHeaders: ["set-cookie"],
-  };
-  
+  //To allow requests from client
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1",
+    "http://104.142.122.231",
+    "https://bookingwebsite-funny.netlify.app",
+    "https://bookingwebsite-funnyclient.netlify.app"
+  ],
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
+};
+
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
 // app.use(bodyParser.urlencoded())
 
-  
+
 app.use('/api/auth', authRoute)
 app.use('/api/hotels', hotelsRoute)
 app.use('/api/rooms', roomsRoute)
@@ -52,17 +54,17 @@ app.use('/api/users', usersRoute)
 app.use('/api/transactions', transactionsRoute)
 
 app.use((err, req, res, next) => {
-    const errorStatus = err.status || 500;
-    const errorMessage = err.message || "Something went wrong!";
-    return res.status(errorStatus).json({
-      success: false,
-      status: errorStatus,
-      message: errorMessage,
-      stack: err.stack,
-    });
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong!";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
   });
+});
 
 app.listen(port, () => {
-    connect();
-    console.log(`Example app listening on port ${port}!`)
+  connect();
+  console.log(`Example app listening on port ${port}!`)
 })
