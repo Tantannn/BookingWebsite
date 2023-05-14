@@ -15,7 +15,7 @@ const Register = () => {
     setRegisterInput({ ...registerInput, [e.target.name]: e.target.value });
   };
   // axios.defaults.baseURL = "http://localhost:5000/";
-  axios.defaults.baseURL = "https://booking-website-g3rm.onrender.com";
+  axios.defaults.baseURL = "https://booking-website-g3rm.onrender.com/";
   const handleSubmit = async () => {
     try {
       const data = await axios.post("api/auth/register", registerInput);

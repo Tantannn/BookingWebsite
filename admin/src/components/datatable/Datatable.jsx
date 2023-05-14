@@ -19,7 +19,8 @@ const Datatable = ({columns}) => {
       if (path === 'hotels' || path === 'rooms') {
         const transactions = await axios.get(`/transactions`, { withCredentials: true })
         const checkTransac = transactions.data.filter(transac => transac.hotel === id) 
-        if(checkTransac) return alert('You cant delete the item exists in the Transactions')
+        console.log(checkTransac);
+        if(checkTransac.length !== 0) return alert('You cant delete the item exists in the Transactions')
       }
       setList(data.filter((item) => item._id !== id));
       await axios.delete(`/${path}/${id}`);
