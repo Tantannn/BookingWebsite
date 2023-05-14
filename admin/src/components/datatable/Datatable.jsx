@@ -16,11 +16,15 @@ const Datatable = ({columns}) => {
   },[data])
   const handleDelete = async (id) => {
     try {
+      if (path === 'hotels' || path === 'rooms') {
+        const transactions = await axios.get(`/transactions`, { withCredentials: true })
+        const checkTransac = transactions.data.filter(transac => transac.hotel === id) 
+        if(checkTransac) return alert('You cant delete the item exists in the Transactions')
+      }
       setList(data.filter((item) => item._id !== id));
-      // await axios.delete(`/${path}/${id}`);
+      await axios.delete(`/${path}/${id}`);
     } catch (err) {}
   };
-  console.log(list);
   const actionColumn = [
     {
       field: "action",

@@ -105,32 +105,34 @@ const handleOption = (e) => {
     <div className="">
       <div className="">
         <span>Select your rooms:</span>
-        {data.map((item) => (
-          <div className="rItem" key={item._id}>
-            <div className="rItemInfo">
-              <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
-              <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
-              </div>
-              <div className="rPrice">${item.price}</div>
-            </div>
-            <div className="rSelectRooms">
-              {item.roomNumbers.map((roomNumber) => (
-                <div className="room" >
-                  <label>{roomNumber.number}</label>
-                  <input
-                    type="checkbox"
-                    value={roomNumber._id}
-                    name={roomNumber.number}
-                    onChange={(e) => handleSelect(e, item.price)}
-                    disabled={!isAvailable(roomNumber)}
-                  />
+        <div className="rGrid">
+          {data.map((item) => (
+            <div className="rItem" key={item._id}>
+              <div className="rItemInfo">
+                <div className="rTitle">{item.title}</div>
+                <div className="rDesc">{item.desc}</div>
+                <div className="rMax">
+                  Max people: <b>{item.maxPeople}</b>
                 </div>
-              ))}
+                <div className="rPrice">${item.price}</div>
+              </div>
+              <div className="rSelectRooms">
+                {item.roomNumbers.map((roomNumber) => (
+                  <div className="room" key={roomNumber._id}>
+                    <label>{roomNumber.number}</label>
+                    <input
+                      type="checkbox"
+                      value={roomNumber._id}
+                      name={roomNumber.number}
+                      onChange={(e) => handleSelect(e, item.price)}
+                      disabled={!isAvailable(roomNumber)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <select id="" onChange={handleOption}>
           <option value="select">Select your Payment Medthod</option>
           <option value="Credit Card">Credit Card</option>

@@ -52,7 +52,8 @@ const NewTransaction = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      const createdHotel = await axios.post("/hotels", newhotel);
+      if(createdHotel) alert('Hotel created successfully')
     } catch (err) {console.log(err)}
   };
   return (

@@ -10,7 +10,7 @@ import { verifyAdmin } from '../utils/verifyToken.js'
 // router.get("/checkuser/:id", verifyAdmin, (req,res,next)=>{
 //   res.send("hello admin, you are logged in and you can delete your account")
 // })
-router.post('/:id',verifyAdmin, updateUser)
+router.post('/:id', updateUser)
 router.delete('/:id',verifyAdmin, deleteUser)
 router.get('/find/:id', getUser)
 router.get('/',verifyAdmin, getUsers)
