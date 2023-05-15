@@ -36,6 +36,8 @@ const corsOptions = {
     "http://104.142.122.231",
     "https://bookingwebsite-funny.netlify.app",
     "https://bookingwebsite-funnyclient.netlify.app", 
+    "https://64610b5ac83c38000899be83--bookingwebsite-funny.netlify.app",
+    "https://64610b5af6a25800093379a2--bookingwebsite-funnyclient.netlify.app"
   ],
   credentials: true,
   exposedHeaders: ["set-cookie"],

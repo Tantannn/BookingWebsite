@@ -20,6 +20,6 @@ router.delete("/:id", deleteTransaction);
 //GET
 router.get("/find/:user", getTransaction);
 //GET ALL
-router.get("/",verifyAdmin, getTransactions);
+router.get("/", getTransactions);
 
 export default router 

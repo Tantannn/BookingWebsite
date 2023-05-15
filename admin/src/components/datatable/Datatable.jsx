@@ -6,24 +6,31 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = ({columns}) => {
+const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const { data, loading, error } = useFetch(`/${path}`);
   const [list, setList] = useState();
   useEffect(() => {
-    setList(data)
-  },[data])
+    setList(data);
+  }, [data]);
   const handleDelete = async (id) => {
     try {
-      if (path === 'hotels' || path === 'rooms') {
-        const transactions = await axios.get(`/transactions`, { withCredentials: true })
-        const checkTransac = transactions.data.filter(transac => transac.hotel === id) 
+      if (path === "hotels" || path === "rooms") {
+        const transactions = await axios.get(`/transactions`, {
+          withCredentials: true,
+        });
+        const checkTransac = transactions.data.filter(
+          (transac) => transac.hotel === id
+        );
         console.log(checkTransac);
-        if(checkTransac.length !== 0) return alert('You cant delete the item exists in the Transactions')
+        if (checkTransac.length !== 0)
+          return alert("You cant delete the item exists in the Transactions");
       }
-      setList(data.filter((item) => item._id !== id));
-      await axios.delete(`/${path}/${id}`);
+      if ( window.AbstractRangeconfirm("Are you sure to delete this item?") === true) {
+        setList(data.filter((item) => item._id !== id));
+        await axios.delete(`/${path}/${id}`);
+      } else return
     } catch (err) {}
   };
   const actionColumn = [
@@ -56,15 +63,17 @@ const Datatable = ({columns}) => {
           Add New
         </Link>
       </div>
-  { list &&   <DataGrid
-        className="datagrid"
-        rows={list}
-        columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-        getRowId={(row) => row._id}
-      />}
+      {list && (
+        <DataGrid
+          className="datagrid"
+          rows={list}
+          columns={columns.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          getRowId={(row) => row._id}
+        />
+      )}
     </div>
   );
 };
