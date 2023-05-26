@@ -20,7 +20,7 @@ const Login = () => {
   };
   console.log(loginInput);
   // axios.defaults.baseURL = "http://localhost:5000/";
-  axios.defaults.baseURL = "https://booking-website-g3rm.onrender.com";
+  axios.defaults.baseURL = "https://booking-website-g3rm.onrender.com/";
   const handleSubmit = async () => {
     try {
       const res = await axios.post("/api/auth/login", loginInput);
