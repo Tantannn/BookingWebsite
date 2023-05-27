@@ -167,8 +167,12 @@
   gap: 50px;
 } */
 
-.rGrid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 20px;
+.rGrid-container  {
+  display:flex;
+  flex-direction: row;
+  /* justify-content: space-around;  */
+}
+
+.rFormm {
+  margin-left: 150px;
 }

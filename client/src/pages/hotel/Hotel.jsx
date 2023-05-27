@@ -172,7 +172,7 @@ const Hotel = () => {
                     minDate={new Date()}
                   />
                 </div>
-                <div>
+                <div className="rFormm">
                   <form action="">
                     <h2>Reserve Info:</h2>
                     <p>Your Full Name:</p>
