@@ -72,10 +72,6 @@ notice, you need client and server runs concurrently in different terminal sessi
 $ cd client          // go to client folder
 $ yarn # or npm i    // npm install packages
 $ npm start       // run it locally
-
-// deployment for client app
-$ npm run build // this will compile the react code using webpack and generate a folder called docs in the root level
-$ npm run start // this will run the files in docs, this behavior is exactly the same how gh-pages will run your static site
 ```
 
 ## Server-side usage(PORT: 5000)
@@ -90,6 +86,7 @@ $ npm start       // run it locally
 ### Admin usage(PORT: 3001)
 
 ```terminal
+// in the root level
 $ cd client   // go to server folder
 $ npm i       // npm install packages
 $ npm start // run it locally
