@@ -20,7 +20,7 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
 
 - Directory `api`
 - Todo:
-  - [x] Authentication system - [passport](https://www.npmjs.com/package/passport)
+  - [x] Authentication system 
     - [x] Sign up - [bcrypt](https://www.npmjs.com/package/bcrypt)
     - [x] Local login - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - [passport-jwt](https://www.npmjs.com/package/passport-jwt)
   - [x] User management - CRUD operations
