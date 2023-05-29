@@ -1,11 +1,10 @@
 
-# MERN Stack w
+# MERN Stack 
 
 ### MongoDB - Express - React - Redux - React Native - NodeJS
 
 MERN stack is intended to provide a starting point for building full-stack JavaScript applications, including dynamic web apps. The stack is made of MongoDB, Express, React, Redux, and NodeJS.
 
-[![mern-workflow](https://raw.githubusercontent.com/t-ho/mern-stack/assets/assets/mern-workflow.gif)](https://github.com/t-ho/mern-stack)
 
 ## Demo
 
