@@ -33,7 +33,6 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
   - [x] Redux store - [react-redux](https://www.npmjs.com/package/react-redux)
   - [x] Redux form - [redux-form](https://redux-form.com/8.3.0). NOTE: Migrate to [formik](https://jaredpalmer.com/formik) soon
   - [x] Router - [react-router-dom](https://www.npmjs.com/package/react-router-dom) - [connected-react-router](https://www.npmjs.com/package/connected-react-router)
-  - [x] Material design - [Material-UI](https://material-ui.com)
   - [ ] Authentication pages
     - [x] Sign up page
     - [x] Sign in page 
@@ -52,6 +51,7 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
   - [x] User management pages
     - [x] User list page
     - [x] User edit page
+  - [x] Material design - [Material-UI](https://material-ui.com)
 
 
 ## Getting started
