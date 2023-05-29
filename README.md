@@ -31,7 +31,6 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
 - Created by using [create-react-app](https://www.npmjs.com/package/create-react-app)
 - Todo:
   - [x] Redux store - [react-redux](https://www.npmjs.com/package/react-redux)
-  - [x] Redux form - [redux-form](https://redux-form.com/8.3.0). NOTE: Migrate to [formik](https://jaredpalmer.com/formik) soon
   - [x] Router - [react-router-dom](https://www.npmjs.com/package/react-router-dom) - [connected-react-router](https://www.npmjs.com/package/connected-react-router)
   - [ ] Authentication pages
     - [x] Sign up page
