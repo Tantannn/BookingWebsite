@@ -39,17 +39,19 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
     - [x] Sign in page 
     - [ ] Reset password page
     - [ ] Profile page
-  - [ ] User management pages
-    - [ ] User list page
-    - [ ] User edit page
+
 
 ### 3. Admin
 
 - Directory `admin`
 - Todo:
   - [x] Verify Admin
-  - [x] Add/Delete Rooms and Hotels
-
+  - [x] Product management pages
+    - [x] Product list page
+    - [x] Product edit page
+  - [x] User management pages
+    - [x] User list page
+    - [x] User edit page
 
 
 ## Getting started
